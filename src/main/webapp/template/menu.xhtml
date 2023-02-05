@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sf="http://www.springframework.org/tags/form"
+	xmlns:fmt="http://java.sun.com/jstl/fmt">
+	
+	<head></head>
+	<body>
+	
+		
+		<!-- BEGIN HEADER -->
+		
+	        <!-- BEGIN NAVIGATION MENU-->
+	        
+	        <div class="header-navigation">
+	          <ul>
+	          
+	          <li class="dropdown dropdown-megamenu">
+	              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">#{menuBean.menu.menuName}</a>
+	              <ul class="dropdown-menu">
+	                <li>
+	                  <div class="header-navigation-content">
+	                    <div class="row">
+	                    
+	                    <c:forEach items="#{menuBean.mainCategoryList}" var="var">		
+	                      <div class="col-md-4 header-navigation-col">
+	                        <h4>#{var.categoryName}</h4>
+	                        
+	                        <c:forEach items="#{var.subCategoryList}" var="sub">		
+		                        <ul>
+		                          <li><a href="category?id=#{sub.id}&amp;name=#{sub.categoryName}">#{sub.categoryName}</a></li>		                          
+		                        </ul>
+	                        </c:forEach>
+	                      </div>
+	                    </c:forEach>
+	                    
+	                    </div>
+	                  </div>
+	                </li>
+	              </ul>
+	            </li>
+	            
+	            
+				<c:forEach items="#{menuBean.list}" var="var">				
+	            <li class="dropdown" >
+	              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+	              		<FONT face="tahome" size="1">#{var.menuName}</FONT></a>                
+	              <!-- BEGIN DROPDOWN MENU -->
+	              <ul class="dropdown-menu">
+	              
+	              <c:forEach items="#{var.categoryList}" var="sub">
+	                <li><a href="category?id=#{sub.id}&amp;name=#{sub.categoryName}">#{sub.categoryName}</a></li>
+	              </c:forEach>
+	              </ul>
+	              <!-- END DROPDOWN MENU -->
+	            </li>
+				</c:forEach>
+	            
+	            
+	            <li class="dropdown">
+	            	<a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">#{msg.BRANDS}</a>                
+	              <!-- BEGIN DROPDOWN MENU -->
+	                <ul class="dropdown-menu">
+	                	<li><a href="#"></a></li>
+	                	<c:forEach items="#{menuBean.brandsList}" var="var">
+	                		<li><a href="itemsBrand?id=#{var.id}&amp;name=#{var.brandName}">#{var.brandName}</a></li>
+	                	</c:forEach>
+	                </ul>
+	            </li>
+	          </ul>
+	        </div>
+	        <!-- END NAVIGATION MENU-->
+
+	    <!-- Header END -->
+	</body>
+</html>
